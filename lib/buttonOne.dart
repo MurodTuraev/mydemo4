@@ -9,6 +9,22 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  String data = "Button";
+  Future _openData() async{
+    Map result = await Navigator.of(context).push(new MaterialPageRoute(
+        builder: (BuildContext context){
+          return new FirstPage();
+        }));
+    if (result!=null && result.containsKey('name') && result.containsKey('age')){
+      setState(() {
+        String name = result['name'];
+        int age = result['age'];
+        data = '$name $age';
+      });
+    }else{
+      print('Nothing!!!');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +34,10 @@ class _DetailPageState extends State<DetailPage> {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.blue)
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, FirstPage.id);
+            // Navigator.pushReplacementNamed(context, FirstPage.id);
+            _openData();
           },
-          child: Text('ButtonTwo'),
+          child: Text(data),
         ),
       ),
     );

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       home: DetailPage(),
       routes: {
         DetailPage.id: (context) => DetailPage(),
-        FirstPage.id: (context) => FirstPage(),
+        // FirstPage.id: (context) => FirstPage(),
       },
     );
   }
